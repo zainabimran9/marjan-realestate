@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact | Marjan Classic Mall & Residency</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav">
+    <a href="index.html" class="brand">Marjan Classic<span>Mall &amp; Residency</span></a>
+    <nav><ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="listings.html">Listings</a></li>
+      <li><a href="index.html#about">About the Project</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul></nav>
+    <div class="nav-actions">
+      <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<section class="section-tight" style="padding-top:56px;">
+  <div class="wrap">
+    <div class="detail-layout">
+      <div>
+        <div class="eyebrow">Get in Touch</div>
+        <h1 style="font-size:2.2rem; margin-bottom:14px;">Book a site visit</h1>
+        <p style="color:var(--ink-soft); max-width:50ch; margin-bottom:32px;">Tell us what you're looking for — a floor, a unit type, a budget — and our sales team will get back to you with current pricing and a visit slot.</p>
+
+        <div class="form-card">
+          <form id="contact-form">
+            <div class="form-grid" style="margin-bottom:16px;">
+              <div class="field"><label for="c-name">Full name</label><input type="text" id="c-name" required /></div>
+              <div class="field"><label for="c-phone">Phone</label><input type="tel" id="c-phone" required placeholder="03xx-xxxxxxx" /></div>
+            </div>
+            <div class="field" style="margin-bottom:16px;"><label for="c-email">Email (optional)</label><input type="email" id="c-email" /></div>
+            <div class="field" style="margin-bottom:20px;"><label for="c-message">What are you looking for?</label><textarea id="c-message" placeholder="e.g. 2-bed apartment, budget around 90 Lac"></textarea></div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+
+      <div>
+        <div class="sidebar-card" style="position:static;">
+          <h3>Sales Office</h3>
+          <p style="font-size:.9rem;">Marjan Classic Mall &amp; Residency<br/>Sector 16-A, Shah Latif Town, Karachi</p>
+          <p class="mono" style="font-size:.85rem; color:var(--coral);">+92 300 0000000</p>
+          <p class="mono" style="font-size:.85rem;">sales@marjanclassic.example</p>
+          <p style="font-size:.85rem; color:var(--ink-soft);">Open 10:00 AM – 7:00 PM, every day</p>
+          <iframe class="map-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Marjan+Classic+Mall+%26+Residency+Sector+16-A+Shah+Latif+Town+Karachi&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-bottom">
+      <span>&copy; 2026 Marjan Classic Mall &amp; Residency. All rights reserved.</span>
+      <a href="admin/login.html" style="opacity:.6;">Admin</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/api.js"></script>
+<script>
+  document.getElementById("contact-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector("button[type=submit]");
+    btn.disabled = true; btn.textContent = "Sending…";
+    try {
+      await Api.submitInquiry({
+        name: document.getElementById("c-name").value,
+        phone: document.getElementById("c-phone").value,
+        email: document.getElementById("c-email").value,
+        message: document.getElementById("c-message").value
+      });
+      toast("Message sent — our team will call you back shortly.");
+      e.target.reset();
+    } catch (err) {
+      toast(`Couldn't send message — ${err.message}`);
+    } finally {
+      btn.disabled = false; btn.textContent = "Send Message";
+    }
+  });
+</script>
+</body>
+</html>
