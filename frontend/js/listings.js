@@ -60,6 +60,7 @@ async function runSearch(pushState = true) {
     grid.innerHTML = rows.length
       ? rows.map(cardTemplate).join("")
       : `<div class="empty-state"><div class="glyph">&#9670;</div>No listings match those filters. Try widening your search.</div>`;
+    animateReveal("#results-grid .card");
   } catch (err) {
     grid.innerHTML = `<div class="empty-state">Couldn't load listings — ${err.message}</div>`;
   }

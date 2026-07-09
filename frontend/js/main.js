@@ -58,6 +58,7 @@ async function loadDirectory() {
         <span class="board-arrow">&rarr;</span>
       </a>
     `).join("");
+    animateBoardRows();
   } catch (err) {
     board.innerHTML = `<div class="board-row"><span class="mono">Couldn't load the directory — ${err.message}</span></div>`;
   }
@@ -72,10 +73,12 @@ async function loadFeatured() {
       return;
     }
     grid.innerHTML = rows.slice(0, 6).map(cardTemplate).join("");
+    animateReveal("#featured-grid .card");
   } catch (err) {
     grid.innerHTML = `<div class="empty-state">Couldn't load listings — ${err.message}</div>`;
   }
 }
 
+initHeroAnimation();
 loadDirectory();
 loadFeatured();

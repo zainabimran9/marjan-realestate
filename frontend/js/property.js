@@ -83,6 +83,9 @@ function render(p) {
     </div>
   `;
 
+  animateReveal(".detail-gallery img", { stagger: 0.08 });
+  animateReveal(".detail-layout > div", { y: 16, stagger: 0.12 });
+
   document.getElementById("fav-btn").addEventListener("click", () => {
     const nowFav = Favorites.toggle(p.id);
     document.getElementById("fav-btn").innerHTML = nowFav ? "&#9829; Saved to favorites" : "&#9825; Save to favorites";

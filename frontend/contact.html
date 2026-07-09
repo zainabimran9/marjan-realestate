@@ -68,8 +68,13 @@
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="js/animations.js"></script>
 <script src="js/api.js"></script>
 <script>
+  animateReveal(".form-card", { y: 16 });
+  animateReveal(".sidebar-card", { y: 16, delay: 0.15 });
+
   document.getElementById("contact-form").addEventListener("submit", async (e) => {
     e.preventDefault();
     const btn = e.target.querySelector("button[type=submit]");
