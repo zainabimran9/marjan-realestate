@@ -1,9 +1,7 @@
 // api.js — small fetch wrapper shared by every page.
-// Change API_BASE if the backend is deployed somewhere other than
-// the same machine on port 4000.
-const API_BASE = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-  ? "http://localhost:4000/api"
-  : "/api"; // when frontend + backend are served from the same domain in production
+// Points at the live Railway backend. If you ever move the backend
+// elsewhere, this is the only line that needs to change.
+const API_BASE = "https://marjan-realestate-production.up.railway.app/api";
 
 async function apiRequest(path, { method = "GET", body, auth = false } = {}) {
   const headers = { "Content-Type": "application/json" };
