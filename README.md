@@ -12,7 +12,10 @@ property too — it's not locked to one building.
 
 ```
 backend/     Node.js + Express API (no external database required)
-frontend/    Static HTML/CSS/JS site (no build step required)
+frontend/    Static HTML/CSS/JS site — the source of truth, edit this
+docs/        A copy of frontend/, kept only because GitHub Pages can only
+             serve from the repo root or /docs — not arbitrary folder names.
+             If you edit the site, edit frontend/ and re-copy into docs/.
 ```
 
 ## Running it locally

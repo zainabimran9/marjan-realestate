@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Dashboard | Marjan Classic Mall & Residency</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<div class="admin-shell">
+  <aside class="admin-side">
+    <div class="brand">Marjan Classic<span>Admin Panel</span></div>
+    <nav>
+      <a href="#listings" class="tab-link active" data-tab="listings">Listings</a>
+      <a href="#inquiries" class="tab-link" data-tab="inquiries">Inquiries <span id="new-count-badge"></span></a>
+      <a href="#" id="logout-link">Sign Out</a>
+    </nav>
+  </aside>
+
+  <main class="admin-main">
+    <!-- LISTINGS TAB -->
+    <section id="tab-listings">
+      <div class="directory-head" style="color:var(--ink); margin-bottom:28px;">
+        <div>
+          <h2 style="color:var(--ink);">Listings</h2>
+          <p style="color:var(--ink-soft); margin:0;">Add, edit or remove properties shown on the site.</p>
+        </div>
+        <button class="btn btn-primary btn-sm" id="new-listing-btn">+ New Listing</button>
+      </div>
+
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr>
+            <th>Title</th><th>Project</th><th>Type</th><th>Status</th><th>Price</th><th>City</th><th></th>
+          </tr></thead>
+          <tbody id="listings-tbody">
+            <tr><td colspan="7">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- INQUIRIES TAB -->
+    <section id="tab-inquiries" style="display:none;">
+      <div style="margin-bottom:28px;">
+        <h2 style="color:var(--ink);">Inquiries</h2>
+        <p style="color:var(--ink-soft); margin:0;">Leads submitted from the contact form and listing pages.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr>
+            <th>Name</th><th>Phone</th><th>Email</th><th>Property</th><th>Message</th><th>Received</th><th>Status</th>
+          </tr></thead>
+          <tbody id="inquiries-tbody">
+            <tr><td colspan="7">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Listing form (shown/hidden, not a true modal to keep this dependency-free) -->
+<div id="listing-form-overlay" style="display:none; position:fixed; inset:0; background:rgba(20,32,27,0.5); z-index:60; align-items:center; justify-content:center; padding:20px;">
+  <div class="form-card" style="max-width:640px; width:100%; max-height:88vh; overflow-y:auto;">
+    <h3 id="form-title">New Listing</h3>
+    <form id="listing-form">
+      <input type="hidden" id="f-id" />
+      <div class="form-grid">
+        <div class="field"><label for="f-title">Title *</label><input type="text" id="f-title" required /></div>
+        <div class="field"><label for="f-project">Project</label><input type="text" id="f-project" placeholder="Marjan Classic Mall & Residency" /></div>
+        <div class="field"><label for="f-type">Type *</label>
+          <select id="f-type" required>
+            <option value="apartment">Apartment</option>
+            <option value="shop">Shop</option>
+            <option value="office">Office</option>
+            <option value="house">House</option>
+            <option value="plot">Plot</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-status">Status</label>
+          <select id="f-status">
+            <option value="available">Available</option>
+            <option value="reserved">Reserved</option>
+            <option value="sold">Sold</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-price">Price (PKR) *</label><input type="number" id="f-price" required min="0" /></div>
+        <div class="field"><label for="f-priceLabel">Price Label</label><input type="text" id="f-priceLabel" placeholder="e.g. PKR 85 Lac" /></div>
+        <div class="field"><label for="f-area">Area (sqft)</label><input type="number" id="f-area" min="0" /></div>
+        <div class="field"><label for="f-floor">Floor</label><input type="text" id="f-floor" placeholder="e.g. 4th Floor" /></div>
+        <div class="field"><label for="f-bed">Bedrooms</label><input type="number" id="f-bed" min="0" /></div>
+        <div class="field"><label for="f-bath">Bathrooms</label><input type="number" id="f-bath" min="0" /></div>
+        <div class="field"><label for="f-city">City</label><input type="text" id="f-city" value="Karachi" /></div>
+        <div class="field"><label for="f-featured">Featured</label>
+          <select id="f-featured"><option value="false">No</option><option value="true">Yes</option></select>
+        </div>
+      </div>
+      <div class="field" style="margin-top:16px;"><label for="f-address">Address</label><input type="text" id="f-address" /></div>
+      <div class="field" style="margin-top:16px;"><label for="f-images">Image URLs (one per line)</label><textarea id="f-images" placeholder="https://…"></textarea></div>
+      <div class="field" style="margin-top:16px;"><label for="f-amenities">Amenities (comma separated)</label><input type="text" id="f-amenities" placeholder="Lift access, 24/7 security" /></div>
+      <div class="field" style="margin-top:16px;"><label for="f-description">Description</label><textarea id="f-description"></textarea></div>
+
+      <div style="display:flex; gap:12px; margin-top:24px;">
+        <button type="submit" class="btn btn-primary">Save Listing</button>
+        <button type="button" class="btn btn-outline" id="cancel-form-btn">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="../js/api.js"></script>
+<script src="../js/admin.js"></script>
+</body>
+</html>
