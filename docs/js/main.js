@@ -41,8 +41,7 @@ async function loadDirectory() {
     const marjanUnits = all.filter((p) => p.project === "Marjan Classic Mall & Residency")
       .sort((a, b) => (a.floor || "").localeCompare(b.floor || ""));
 
-    document.getElementById("stat-available").textContent =
-      all.filter((p) => p.status === "available").length;
+    animateCounter(document.getElementById("stat-available"), all.filter((p) => p.status === "available").length, { delay: 0.6 });
 
     if (!marjanUnits.length) {
       board.innerHTML = `<div class="board-row"><span class="mono">No units listed yet.</span></div>`;
@@ -80,5 +79,7 @@ async function loadFeatured() {
 }
 
 initHeroAnimation();
+animateCounter(document.getElementById("stat-floors"), 6, { delay: 0.4 });
+animateCounter(document.getElementById("stat-usetypes"), 2, { delay: 0.5 });
 loadDirectory();
 loadFeatured();

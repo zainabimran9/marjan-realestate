@@ -85,6 +85,7 @@ function render(p) {
 
   animateReveal(".detail-gallery img", { stagger: 0.08 });
   animateReveal(".detail-layout > div", { y: 16, stagger: 0.12 });
+  initLightbox(".detail-gallery img");
 
   document.getElementById("fav-btn").addEventListener("click", () => {
     const nowFav = Favorites.toggle(p.id);
