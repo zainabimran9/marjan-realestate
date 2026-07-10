@@ -154,6 +154,7 @@ function initPageTransitions() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  injectWhatsAppButton();
   initHeroParallax();
   initCardTilt();
   initStickyNavShrink();
