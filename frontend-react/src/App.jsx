@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import Toast from "./components/Toast";
 import { LightboxProvider } from "./components/Lightbox";
+import { useCardTilt } from "./lib/animations";
 import Home from "./pages/Home";
 import Listings from "./pages/Listings";
 import PropertyDetail from "./pages/PropertyDetail";
@@ -37,6 +38,7 @@ function SiteLayout({ children }) {
 }
 
 export default function App() {
+  useCardTilt();
   return (
     <BrowserRouter basename="/marjan-realestate">
       <LightboxProvider>
