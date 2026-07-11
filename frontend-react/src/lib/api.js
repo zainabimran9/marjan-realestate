@@ -1,6 +1,6 @@
-// api.js — small fetch wrapper shared by every page.
-// Points at the live Railway backend. If you ever move the backend
-// elsewhere, this is the only line that needs to change.
+// api.js — fetch wrapper for the live Railway backend. Same backend,
+// same endpoints as the previous plain-JS frontend — only the frontend
+// architecture changed, nothing on the server needed to change.
 const API_BASE = "https://marjan-realestate-production.up.railway.app/api";
 
 async function apiRequest(path, { method = "GET", body, auth = false } = {}) {
@@ -17,16 +17,15 @@ async function apiRequest(path, { method = "GET", body, auth = false } = {}) {
   });
 
   let data = null;
-  try { data = await res.json(); } catch (_) { /* no body */ }
+  try { data = await res.json(); } catch { /* no body */ }
 
   if (!res.ok) {
-    const message = data?.error || `Request failed (${res.status})`;
-    throw new Error(message);
+    throw new Error(data?.error || `Request failed (${res.status})`);
   }
   return data;
 }
 
-const Api = {
+export const Api = {
   getProperties: (params = {}) => {
     const qs = new URLSearchParams(Object.entries(params).filter(([, v]) => v !== "" && v != null));
     return apiRequest(`/properties?${qs.toString()}`);
@@ -43,47 +42,29 @@ const Api = {
   login: (username, password) => apiRequest("/auth/login", { method: "POST", body: { username, password } })
 };
 
-function formatPrice(num) {
+export function formatPrice(num) {
   if (num == null) return "Price on request";
   if (num >= 10000000) return `PKR ${(num / 10000000).toFixed(2).replace(/\.00$/, "")} Crore`;
   if (num >= 100000) return `PKR ${(num / 100000).toFixed(2).replace(/\.00$/, "")} Lac`;
   return `PKR ${num.toLocaleString()}`;
 }
 
-function toast(message) {
-  let el = document.querySelector(".toast");
-  if (!el) {
-    el = document.createElement("div");
-    el.className = "toast";
-    document.body.appendChild(el);
-  }
-  el.textContent = message;
-  el.classList.add("show");
-  clearTimeout(el._timer);
-  el._timer = setTimeout(() => el.classList.remove("show"), 3200);
+export function statusLabel(s) {
+  return { available: "Available", reserved: "Reserved", sold: "Sold" }[s] || s;
 }
 
 // ---- Favorites (stored client-side, no account needed) ----
-const Favorites = {
-  key: "marjan_favorites",
+const FAV_KEY = "marjan_favorites";
+export const Favorites = {
   all() {
-    try { return JSON.parse(localStorage.getItem(this.key)) || []; } catch { return []; }
+    try { return JSON.parse(localStorage.getItem(FAV_KEY)) || []; } catch { return []; }
   },
   has(id) { return this.all().includes(id); },
   toggle(id) {
     let list = this.all();
     if (list.includes(id)) list = list.filter((x) => x !== id);
     else list.push(id);
-    localStorage.setItem(this.key, JSON.stringify(list));
+    localStorage.setItem(FAV_KEY, JSON.stringify(list));
     return list.includes(id);
   }
 };
-
-// ---- Mobile nav toggle (shared header behavior) ----
-document.addEventListener("DOMContentLoaded", () => {
-  const toggle = document.querySelector(".nav-toggle");
-  const links = document.querySelector(".nav-links");
-  if (toggle && links) {
-    toggle.addEventListener("click", () => links.classList.toggle("open"));
-  }
-});

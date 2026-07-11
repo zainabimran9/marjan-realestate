@@ -11,12 +11,30 @@ property too — it's not locked to one building.
 ## Structure
 
 ```
-backend/     Node.js + Express API (no external database required)
-frontend/    Static HTML/CSS/JS site — the source of truth, edit this
-docs/        A copy of frontend/, kept only because GitHub Pages can only
-             serve from the repo root or /docs — not arbitrary folder names.
-             If you edit the site, edit frontend/ and re-copy into docs/.
+backend/          Node.js + Express API (no external database required)
+frontend-react/   React (Vite) app — this is the current source of truth for the UI.
+                   Edit components/pages here, then `npm run build` to produce dist/.
+docs/              The built output of frontend-react/, copied here because GitHub
+                   Pages can only serve from the repo root or /docs. Never edit
+                   files in here directly — they get overwritten on every build.
+frontend/          The original plain HTML/CSS/JS version, kept for reference only.
+                   No longer deployed. Safe to delete once the React version is
+                   confirmed working long-term.
 ```
+
+### Making changes to the live site
+
+```bash
+cd frontend-react
+npm install        # first time only
+# ...edit files in src/...
+npm run build       # produces frontend-react/dist/
+cp -r dist/* ../docs/
+cp docs/index.html docs/404.html   # keeps client-side routing working on GitHub Pages
+cd ..
+git add -A && git commit -m "..." && git push
+```
+GitHub Pages rebuilds automatically from the `docs/` folder within a minute or two of pushing.
 
 ## Running it locally
 
