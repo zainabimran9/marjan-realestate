@@ -48,20 +48,22 @@ export function useCountUp(target, deps = []) {
 }
 
 // Hero timeline: eyebrow -> heading -> subtext -> buttons -> stats.
-export function useHeroTimeline() {
-  const ref = useRef(null);
+// Takes explicit refs to each element rather than class selectors —
+// avoids any ambiguity from compound selectors combined with scoped
+// gsap.context() lookups.
+export function useHeroTimeline(refs) {
   useEffect(() => {
-    if (!ref.current) return;
-    const ctx = gsap.context(() => {
-      gsap.timeline()
-        .from(".hero-eyebrow", { opacity: 0, y: 16, duration: 0.6, ease: "power2.out" })
-        .from(".hero h1", { opacity: 0, y: 26, duration: 0.8, ease: "power2.out" }, "-=0.35")
-        .from(".hero-sub", { opacity: 0, y: 16, duration: 0.6, ease: "power2.out" }, "-=0.45")
-        .from(".hero-actions .btn", { opacity: 0, y: 12, duration: 0.5, stagger: 0.1, ease: "power2.out" }, "-=0.3");
-    }, ref);
-    return () => ctx.revert();
+    const { eyebrow, heading, sub, actions } = refs;
+    if (!eyebrow.current || !heading.current || !sub.current) return;
+    const btns = actions.current ? actions.current.querySelectorAll(".btn") : [];
+    const tl = gsap.timeline()
+      .from(eyebrow.current, { opacity: 0, y: 16, duration: 0.6, ease: "power2.out" })
+      .from(heading.current, { opacity: 0, y: 26, duration: 0.8, ease: "power2.out" }, "-=0.35")
+      .from(sub.current, { opacity: 0, y: 16, duration: 0.6, ease: "power2.out" }, "-=0.45");
+    if (btns.length) tl.from(btns, { opacity: 0, y: 12, duration: 0.5, stagger: 0.1, ease: "power2.out" }, "-=0.3");
+    return () => tl.kill();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  return ref;
 }
 
 // Background parallax drift on scroll.

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Api, statusLabel, formatPrice } from "../lib/api";
 import PropertyCard from "../components/PropertyCard";
@@ -22,7 +22,11 @@ export default function Home() {
   const availableCount = (all || []).filter((p) => p.status === "available").length;
 
   const pageRef = usePageTransition();
-  const heroTextRef = useHeroTimeline();
+  const eyebrowRef = useRef(null);
+  const headingRef = useRef(null);
+  const subRef = useRef(null);
+  const actionsRef = useRef(null);
+  useHeroTimeline({ eyebrow: eyebrowRef, heading: headingRef, sub: subRef, actions: actionsRef });
   const heroBgRef = useHeroParallax();
   const floorsRef = useCountUp(all ? 6 : null, [all]);
   const useTypesRef = useCountUp(all ? 2 : null, [all]);
@@ -37,11 +41,11 @@ export default function Home() {
   return (
     <div ref={pageRef}>
       <section className="hero" ref={heroBgRef}>
-        <div className="hero-inner" ref={heroTextRef}>
-          <div className="hero-eyebrow">Sector 16-A &middot; Shah Latif Town &middot; Karachi</div>
-          <h1>A mall and a home, under one address.</h1>
-          <p className="hero-sub">Marjan Classic Mall &amp; Residency pairs ground-floor retail with residential floors above — apartments, shops and offices, all with live availability you can check before you visit.</p>
-          <div className="hero-actions">
+        <div className="hero-inner">
+          <div className="hero-eyebrow" ref={eyebrowRef}>Sector 16-A &middot; Shah Latif Town &middot; Karachi</div>
+          <h1 ref={headingRef}>A mall and a home, under one address.</h1>
+          <p className="hero-sub" ref={subRef}>Marjan Classic Mall &amp; Residency pairs ground-floor retail with residential floors above — apartments, shops and offices, all with live availability you can check before you visit.</p>
+          <div className="hero-actions" ref={actionsRef}>
             <Link to="/listings" className="btn btn-primary">View Available Units</Link>
             <Link to="/contact" className="btn btn-ghost-light">Book a Site Visit</Link>
           </div>
