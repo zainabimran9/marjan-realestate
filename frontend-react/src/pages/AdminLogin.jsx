@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Api } from "../lib/api";
 import { usePageTransition } from "../lib/animations";
 
@@ -50,7 +50,7 @@ export default function AdminLogin() {
           </button>
           {error && <p style={{ color: "var(--coral)", fontSize: ".85rem", marginTop: 14 }}>{error}</p>}
         </form>
-        <a href="/" style={{ display: "block", marginTop: 20, fontSize: ".85rem", color: "var(--ink-soft)" }}>&larr; Back to site</a>
+        <Link to="/" style={{ display: "block", marginTop: 20, fontSize: ".85rem", color: "var(--ink-soft)" }}>&larr; Back to site</Link>
       </div>
     </div>
   );

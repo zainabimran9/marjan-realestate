@@ -38,7 +38,7 @@ function SiteLayout({ children }) {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/marjan-realestate">
       <LightboxProvider>
         <ScrollManager />
         <Routes>
