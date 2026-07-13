@@ -109,6 +109,7 @@ export default function Home() {
             <div>
               <div className="eyebrow">About the Project</div>
               <h2>Built for two kinds of days</h2>
+              <p style={{ color: "var(--ink-soft)", fontSize: ".85rem", marginTop: -8 }}>A project by Merck Group of Builders</p>
               <p>Marjan Classic Mall &amp; Residency sits on Sector 16-A's main frontage in Shah Latif Town — a ground-and-first-floor retail mall with a separate residential lobby serving the apartment floors above. Shops get direct footfall from the mall corridor; apartments get a quieter entrance, dedicated lift bank, and 24/7 security shared across the building.</p>
               <p>It's built for residents who want their daily errands — a tuition centre, a clinic, a grocery shop — a lift ride away, and for shop owners who want a residential customer base built into the same address.</p>
               <ul className="amenity-list">

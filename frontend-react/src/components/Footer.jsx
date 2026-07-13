@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import merckLogo from "../assets/merck-logo.jpg";
 
 export default function Footer() {
   return (
@@ -33,6 +34,14 @@ export default function Footer() {
         </div>
         <div className="footer-bottom">
           <span>&copy; 2026 Marjan Classic Mall &amp; Residency. All rights reserved.</span>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <span style={{ opacity: 0.7 }}>Developed by</span>
+            <img
+              src={merckLogo}
+              alt="Merck Group of Builders"
+              style={{ height: 26, width: "auto", borderRadius: 3, background: "#fff", padding: "2px 6px" }}
+            />
+          </div>
           <Link to="/admin/login" style={{ opacity: 0.6 }}>Admin</Link>
         </div>
       </div>
