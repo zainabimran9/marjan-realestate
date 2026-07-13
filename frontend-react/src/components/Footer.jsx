@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import merckLogo from "../assets/merck-logo.jpg";
+import merckLogo from "../assets/merck-logo.png";
 
 export default function Footer() {
   return (

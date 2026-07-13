@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import merckLogo from "../assets/merck-logo.jpg";
+import merckLogo from "../assets/merck-logo.png";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
