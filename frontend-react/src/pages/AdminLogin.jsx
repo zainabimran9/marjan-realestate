@@ -33,7 +33,7 @@ export default function AdminLogin() {
   return (
     <div className="login-shell" ref={pageRef}>
       <div className="login-card">
-        <div className="brand" style={{ marginBottom: 28 }}>Marjan Classic<span>Admin Panel</span></div>
+        <div className="brand" style={{ marginBottom: 28 }}>Merck Group<span>Admin Panel</span></div>
         <h2 style={{ fontSize: "1.5rem" }}>Sign in</h2>
         <p style={{ color: "var(--ink-soft)", fontSize: ".9rem", marginBottom: 24 }}>Manage listings and inquiries for the site.</p>
         <form onSubmit={submit}>

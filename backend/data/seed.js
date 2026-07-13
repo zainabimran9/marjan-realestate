@@ -8,8 +8,8 @@ const now = () => new Date().toISOString();
 const properties = [
   {
     id: 1,
-    project: "Marjan Classic Mall & Residency",
-    title: "Marjan Classic Mall & Residency — 2 Bed Apartment",
+    project: "Merck Group of Builders",
+    title: "Merck Group of Builders — 2 Bed Apartment",
     type: "apartment",
     status: "available",
     price: 8500000,
@@ -20,9 +20,9 @@ const properties = [
     floor: "4th Floor",
     city: "Karachi",
     address: "Sector 16-A, Shah Latif Town, Karachi",
-    mapQuery: "Marjan Classic Mall & Residency, Sector 16-A, Shah Latif Town, Karachi",
+    mapQuery: "Sector 16-A, Shah Latif Town, Karachi",
     description:
-      "A bright 2-bed, 2-bath apartment in Marjan Classic Mall & Residency, a mixed-use tower combining ground-floor retail with residential floors above in Shah Latif Town. Close to Sector 16-A's main artery, with a dedicated residential lobby separate from the mall entrance.",
+      "A bright 2-bed, 2-bath apartment in Merck Group of Builders, a mixed-use tower combining ground-floor retail with residential floors above in Shah Latif Town. Close to Sector 16-A's main artery, with a dedicated residential lobby separate from the mall entrance.",
     images: [
       "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200&q=80",
       "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=80"
@@ -33,8 +33,8 @@ const properties = [
   },
   {
     id: 2,
-    project: "Marjan Classic Mall & Residency",
-    title: "Marjan Classic Mall & Residency — 3 Bed Apartment",
+    project: "Merck Group of Builders",
+    title: "Merck Group of Builders — 3 Bed Apartment",
     type: "apartment",
     status: "available",
     price: 12500000,
@@ -45,7 +45,7 @@ const properties = [
     floor: "6th Floor",
     city: "Karachi",
     address: "Sector 16-A, Shah Latif Town, Karachi",
-    mapQuery: "Marjan Classic Mall & Residency, Sector 16-A, Shah Latif Town, Karachi",
+    mapQuery: "Sector 16-A, Shah Latif Town, Karachi",
     description:
       "Corner-unit 3-bed apartment with cross-ventilation on two sides, a separate drawing and dining layout, and a covered balcony overlooking Sector 16-A.",
     images: [
@@ -58,8 +58,8 @@ const properties = [
   },
   {
     id: 3,
-    project: "Marjan Classic Mall & Residency",
-    title: "Marjan Classic Mall & Residency — Ground Floor Shop",
+    project: "Merck Group of Builders",
+    title: "Merck Group of Builders — Ground Floor Shop",
     type: "shop",
     status: "available",
     price: 6500000,
@@ -70,7 +70,7 @@ const properties = [
     floor: "Ground Floor",
     city: "Karachi",
     address: "Sector 16-A, Shah Latif Town, Karachi",
-    mapQuery: "Marjan Classic Mall & Residency, Sector 16-A, Shah Latif Town, Karachi",
+    mapQuery: "Sector 16-A, Shah Latif Town, Karachi",
     description:
       "Ground-floor shop facing the main mall corridor — high foot traffic from both mall visitors and residents. Shell condition, ready for fit-out.",
     images: [
@@ -83,8 +83,8 @@ const properties = [
   },
   {
     id: 4,
-    project: "Marjan Classic Mall & Residency",
-    title: "Marjan Classic Mall & Residency — First Floor Office / Shop",
+    project: "Merck Group of Builders",
+    title: "Merck Group of Builders — First Floor Office / Shop",
     type: "office",
     status: "reserved",
     price: 4800000,
@@ -95,7 +95,7 @@ const properties = [
     floor: "1st Floor",
     city: "Karachi",
     address: "Sector 16-A, Shah Latif Town, Karachi",
-    mapQuery: "Marjan Classic Mall & Residency, Sector 16-A, Shah Latif Town, Karachi",
+    mapQuery: "Sector 16-A, Shah Latif Town, Karachi",
     description:
       "Compact first-floor unit suited to a clinic, tuition centre, or small office — directly above the mall's main atrium.",
     images: [

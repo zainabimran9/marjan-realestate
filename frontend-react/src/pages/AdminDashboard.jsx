@@ -113,7 +113,7 @@ export default function AdminDashboard() {
   return (
     <div className="admin-shell">
       <aside className="admin-side">
-        <div className="brand">Marjan Classic<span>Admin Panel</span></div>
+        <div className="brand">Merck Group<span>Admin Panel</span></div>
         <nav>
           <a href="#listings" className={tab === "listings" ? "active" : ""} onClick={(e) => { e.preventDefault(); setTab("listings"); }}>Listings</a>
           <a href="#inquiries" className={tab === "inquiries" ? "active" : ""} onClick={(e) => { e.preventDefault(); setTab("inquiries"); }}>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import merckLogo from "../assets/merck-logo.jpg";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -15,8 +16,8 @@ export default function Header() {
   return (
     <header className={`site-header${scrolled ? " scrolled" : ""}`}>
       <div className="nav">
-        <Link to="/" className="brand" onClick={() => setMenuOpen(false)}>
-          Marjan Classic<span>Mall &amp; Residency</span>
+        <Link to="/" className="brand" onClick={() => setMenuOpen(false)} style={{ display: "flex", alignItems: "center" }}>
+          <img src={merckLogo} alt="Merck Group of Builders" style={{ height: 40, width: "auto" }} />
         </Link>
         <nav>
           <ul className={`nav-links${menuOpen ? " open" : ""}`}>

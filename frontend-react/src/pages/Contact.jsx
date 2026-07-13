@@ -51,7 +51,7 @@ export default function Contact() {
             <div>
               <div className="sidebar-card" style={{ position: "static" }} ref={sideRef}>
                 <h3>Sales Office</h3>
-                <p style={{ fontSize: ".9rem" }}>Marjan Classic Mall &amp; Residency<br/>Sector 16-A, Shah Latif Town, Karachi</p>
+                <p style={{ fontSize: ".9rem" }}>Merck Group of Builders<br/>Sector 16-A, Shah Latif Town, Karachi</p>
                 <p className="mono" style={{ fontSize: ".85rem", color: "var(--coral)" }}>+92 300 0000000</p>
                 <p className="mono" style={{ fontSize: ".85rem" }}>sales@marjanclassic.example</p>
                 <p style={{ fontSize: ".85rem", color: "var(--ink-soft)" }}>Open 10:00 AM – 7:00 PM, every day</p>
@@ -60,7 +60,7 @@ export default function Contact() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Sales office location"
-                  src="https://www.google.com/maps?q=Marjan+Classic+Mall+%26+Residency+Sector+16-A+Shah+Latif+Town+Karachi&output=embed"
+                  src="https://www.google.com/maps?q=Sector+16-A+Shah+Latif+Town+Karachi&output=embed"
                 />
               </div>
             </div>

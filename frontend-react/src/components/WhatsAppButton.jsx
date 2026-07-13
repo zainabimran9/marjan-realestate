@@ -1,5 +1,5 @@
 const PHONE = "923000000000"; // update once the client provides their real WhatsApp number
-const MESSAGE = "Hi, I'm interested in Marjan Classic Mall & Residency";
+const MESSAGE = "Hi, I'm interested in Merck Group of Builders";
 
 export default function WhatsAppButton() {
   return (

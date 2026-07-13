@@ -17,7 +17,7 @@ export default function Home() {
     Api.getProperties({ featured: "true", status: "available" }).then(setFeatured).catch((e) => setError(e.message));
   }, []);
 
-  const marjanUnits = (all || []).filter((p) => p.project === "Marjan Classic Mall & Residency")
+  const marjanUnits = (all || []).filter((p) => p.project === "Merck Group of Builders")
     .sort((a, b) => (a.floor || "").localeCompare(b.floor || ""));
   const availableCount = (all || []).filter((p) => p.status === "available").length;
 
@@ -44,7 +44,7 @@ export default function Home() {
         <div className="hero-inner">
           <div className="hero-eyebrow" ref={eyebrowRef}>Sector 16-A &middot; Shah Latif Town &middot; Karachi</div>
           <h1 ref={headingRef}>A mall and a home, under one address.</h1>
-          <p className="hero-sub" ref={subRef}>Marjan Classic Mall &amp; Residency pairs ground-floor retail with residential floors above — apartments, shops and offices, all with live availability you can check before you visit.</p>
+          <p className="hero-sub" ref={subRef}>Merck Group of Builders pairs ground-floor retail with residential floors above — apartments, shops and offices, all with live availability you can check before you visit.</p>
           <div className="hero-actions" ref={actionsRef}>
             <Link to="/listings" className="btn btn-primary">View Available Units</Link>
             <Link to="/contact" className="btn btn-ghost-light">Book a Site Visit</Link>
@@ -75,7 +75,7 @@ export default function Home() {
               <Link className="board-row" to={`/property/${p.id}`} key={p.id}>
                 <span className="board-floor">{p.floor || "—"}</span>
                 <span className="board-unit">
-                  {p.title.replace("Marjan Classic Mall & Residency — ", "")}
+                  {p.title.replace("Merck Group of Builders — ", "")}
                   <small>{p.type} &middot; {p.areaSqft || "—"} sqft</small>
                 </span>
                 <span className={`board-status ${p.status}`}>{statusLabel(p.status)}</span>
@@ -109,8 +109,7 @@ export default function Home() {
             <div>
               <div className="eyebrow">About the Project</div>
               <h2>Built for two kinds of days</h2>
-              <p style={{ color: "var(--ink-soft)", fontSize: ".85rem", marginTop: -8 }}>A project by Merck Group of Builders</p>
-              <p>Marjan Classic Mall &amp; Residency sits on Sector 16-A's main frontage in Shah Latif Town — a ground-and-first-floor retail mall with a separate residential lobby serving the apartment floors above. Shops get direct footfall from the mall corridor; apartments get a quieter entrance, dedicated lift bank, and 24/7 security shared across the building.</p>
+              <p>Merck Group of Builders sits on Sector 16-A's main frontage in Shah Latif Town — a ground-and-first-floor retail mall with a separate residential lobby serving the apartment floors above. Shops get direct footfall from the mall corridor; apartments get a quieter entrance, dedicated lift bank, and 24/7 security shared across the building.</p>
               <p>It's built for residents who want their daily errands — a tuition centre, a clinic, a grocery shop — a lift ride away, and for shop owners who want a residential customer base built into the same address.</p>
               <ul className="amenity-list">
                 <li>24/7 security</li><li>Backup generator</li><li>Reserved parking</li><li>Separate residential lobby</li><li>Mosque on premises</li><li>Lift access on all floors</li>
@@ -123,8 +122,8 @@ export default function Home() {
                 className="map-embed"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Marjan Classic Mall & Residency location"
-                src="https://www.google.com/maps?q=Marjan+Classic+Mall+%26+Residency+Sector+16-A+Shah+Latif+Town+Karachi&output=embed"
+                title="Merck Group of Builders location"
+                src="https://www.google.com/maps?q=Sector+16-A+Shah+Latif+Town+Karachi&output=embed"
               />
             </div>
           </div>
