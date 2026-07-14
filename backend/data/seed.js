@@ -8,8 +8,8 @@ const now = () => new Date().toISOString();
 const properties = [
   {
     id: 1,
-    project: "Merck Group of Builders",
-    title: "Merck Group of Builders — 2 Bed Apartment",
+    project: "Marjan Classic Mall & Residency",
+    title: "Marjan Classic Mall & Residency — 2 Bed Apartment",
     type: "apartment",
     status: "available",
     price: 8500000,
@@ -22,7 +22,7 @@ const properties = [
     address: "Sector 16-A, Shah Latif Town, Karachi",
     mapQuery: "Sector 16-A, Shah Latif Town, Karachi",
     description:
-      "A bright 2-bed, 2-bath apartment in Merck Group of Builders, a mixed-use tower combining ground-floor retail with residential floors above in Shah Latif Town. Close to Sector 16-A's main artery, with a dedicated residential lobby separate from the mall entrance.",
+      "A bright 2-bed, 2-bath apartment in Marjan Classic Mall & Residency, a mixed-use tower combining ground-floor retail with residential floors above in Shah Latif Town. Close to Sector 16-A's main artery, with a dedicated residential lobby separate from the mall entrance.",
     images: [
       "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200&q=80",
       "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=80"
@@ -33,8 +33,8 @@ const properties = [
   },
   {
     id: 2,
-    project: "Merck Group of Builders",
-    title: "Merck Group of Builders — 3 Bed Apartment",
+    project: "Marjan Classic Mall & Residency",
+    title: "Marjan Classic Mall & Residency — 3 Bed Apartment",
     type: "apartment",
     status: "available",
     price: 12500000,
@@ -58,8 +58,8 @@ const properties = [
   },
   {
     id: 3,
-    project: "Merck Group of Builders",
-    title: "Merck Group of Builders — Ground Floor Shop",
+    project: "Marjan Classic Mall & Residency",
+    title: "Marjan Classic Mall & Residency — Ground Floor Shop",
     type: "shop",
     status: "available",
     price: 6500000,
@@ -83,8 +83,8 @@ const properties = [
   },
   {
     id: 4,
-    project: "Merck Group of Builders",
-    title: "Merck Group of Builders — First Floor Office / Shop",
+    project: "Marjan Classic Mall & Residency",
+    title: "Marjan Classic Mall & Residency — First Floor Office / Shop",
     type: "office",
     status: "reserved",
     price: 4800000,

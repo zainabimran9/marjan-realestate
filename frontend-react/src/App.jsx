@@ -6,7 +6,11 @@ import WhatsAppButton from "./components/WhatsAppButton";
 import Toast from "./components/Toast";
 import { LightboxProvider } from "./components/Lightbox";
 import { useCardTilt } from "./lib/animations";
-import Home from "./pages/Home";
+import CompanyHome from "./pages/CompanyHome";
+import About from "./pages/About";
+import Projects from "./pages/Projects";
+import MarjanProject from "./pages/MarjanProject";
+import ComingSoonProject from "./pages/ComingSoonProject";
 import Listings from "./pages/Listings";
 import PropertyDetail from "./pages/PropertyDetail";
 import Contact from "./pages/Contact";
@@ -44,7 +48,11 @@ export default function App() {
       <LightboxProvider>
         <ScrollManager />
         <Routes>
-          <Route path="/" element={<SiteLayout><Home /></SiteLayout>} />
+          <Route path="/" element={<SiteLayout><CompanyHome /></SiteLayout>} />
+          <Route path="/about" element={<SiteLayout><About /></SiteLayout>} />
+          <Route path="/projects" element={<SiteLayout><Projects /></SiteLayout>} />
+          <Route path="/projects/marjan-classic" element={<SiteLayout><MarjanProject /></SiteLayout>} />
+          <Route path="/projects/coming-soon" element={<SiteLayout><ComingSoonProject /></SiteLayout>} />
           <Route path="/listings" element={<SiteLayout><Listings /></SiteLayout>} />
           <Route path="/property/:id" element={<SiteLayout><PropertyDetail /></SiteLayout>} />
           <Route path="/contact" element={<SiteLayout><Contact /></SiteLayout>} />

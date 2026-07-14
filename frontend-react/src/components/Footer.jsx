@@ -13,15 +13,15 @@ export default function Footer() {
               style={{ height: 44, width: "auto", marginBottom: 14, borderRadius: 3, background: "#fff", padding: "4px 8px" }}
             />
             <p style={{ maxWidth: "36ch", fontSize: ".9rem" }}>
-              Sector 16-A, Shah Latif Town, Karachi. Apartments, shops and offices under one roof.
+              Builders &amp; Developers, Karachi. Mixed-use residential and commercial developments.
             </p>
           </div>
           <div>
             <h4>Explore</h4>
             <ul>
+              <li><Link to="/projects">Our Projects</Link></li>
+              <li><Link to="/about">About Us</Link></li>
               <li><Link to="/listings">All Listings</Link></li>
-              <li><Link to="/listings?type=apartment">Apartments</Link></li>
-              <li><Link to="/listings?type=shop">Shops</Link></li>
               <li><Link to="/contact">Contact</Link></li>
             </ul>
           </div>
@@ -29,8 +29,8 @@ export default function Footer() {
             <h4>Contact</h4>
             <ul>
               <li>+92 300 0000000</li>
-              <li>sales@merckgroupofbuilders.example</li>
-              <li>Sector 16-A, Shah Latif Town, Karachi</li>
+              <li>info@merckgroupofbuilders.example</li>
+              <li>Karachi, Pakistan</li>
             </ul>
           </div>
         </div>

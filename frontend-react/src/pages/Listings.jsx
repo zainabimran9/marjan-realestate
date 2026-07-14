@@ -39,7 +39,7 @@ export default function Listings() {
         <div className="wrap">
           <div className="eyebrow">All Listings</div>
           <h1 style={{ fontSize: "2.4rem", marginBottom: 8 }}>Find your unit</h1>
-          <p style={{ color: "var(--ink-soft)", maxWidth: "60ch" }}>Search across every listing — Merck Group of Builders units and independently listed properties.</p>
+          <p style={{ color: "var(--ink-soft)", maxWidth: "60ch" }}>Search across every listing — Marjan Classic Mall &amp; Residency units and independently listed properties.</p>
 
           <div className="filters">
             <div className="field">
