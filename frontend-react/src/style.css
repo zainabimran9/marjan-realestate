@@ -207,6 +207,15 @@ p { margin: 0 0 1em; }
 .hero-sub { max-width: 46ch; font-size: 1.08rem; opacity: 0.88; margin-bottom: 2em; }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
+.hero-slide-dots { display: flex; gap: 8px; margin-top: 28px; }
+.hero-dot {
+  width: 26px; height: 3px; border-radius: 2px;
+  background: rgba(246,241,231,0.35);
+  border: none; cursor: pointer; padding: 0;
+  transition: background 0.2s ease;
+}
+.hero-dot.active { background: var(--coral); }
+
 .hero-stats {
   margin-top: 56px;
   display: grid;
@@ -494,6 +503,24 @@ textarea { resize: vertical; min-height: 100px; font-family: var(--font-body); }
   transition: transform 0.2s ease;
 }
 .wa-float:hover { transform: scale(1.08); }
+
+.email-float {
+  position: fixed;
+  bottom: 88px;
+  right: 22px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--coral);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(178,58,46,0.4);
+  z-index: 50;
+  transition: transform 0.2s ease;
+}
+.email-float:hover { transform: scale(1.08); }
 
 /* ---------- Lightbox ---------- */
 .lightbox-overlay {

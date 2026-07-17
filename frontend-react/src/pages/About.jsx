@@ -1,11 +1,22 @@
 import { Link } from "react-router-dom";
 import lobbyCollage from "../assets/marjan/lobby-collage.jpg";
-import { usePageTransition, useScrollReveal } from "../lib/animations";
+import { usePageTransition, useScrollReveal, useStaggerReveal } from "../lib/animations";
+
+const services = [
+  { title: "Land Development", desc: "Turning raw plots into buildable, properly zoned land with the infrastructure a project needs before construction starts." },
+  { title: "Residential Construction", desc: "Apartments and residences built around real daily use — natural light, sensible layouts, and construction that holds up." },
+  { title: "Commercial & Retail Space", desc: "Shops, offices and mall-format retail designed for footfall, visibility, and the practical needs of a business tenant." },
+  { title: "Mixed-Use Developments", desc: "Projects like Marjan Classic that combine retail and residential in one address, each with its own dedicated access." },
+  { title: "Project Management", desc: "Coordinating architecture, contractors, and timelines so a project moves from plan to handover without surprises." },
+  { title: "Sales & Booking Support", desc: "A direct sales office that walks buyers and investors through units, pricing, and payment plans in person." }
+];
 
 export default function About() {
   const pageRef = usePageTransition();
   const introRef = useScrollReveal();
   const valuesRef = useScrollReveal();
+  const servicesHeadRef = useScrollReveal();
+  const servicesRef = useStaggerReveal(".form-card", []);
 
   return (
     <div ref={pageRef}>
@@ -27,6 +38,25 @@ export default function About() {
               <p className="mono" style={{ fontSize: ".85rem" }}>info@merckgroupofbuilders.example</p>
               <Link to="/contact" className="btn btn-primary btn-sm" style={{ marginTop: 16, width: "100%", justifyContent: "center" }}>Contact Us</Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="wrap">
+          <div className="section-head" ref={servicesHeadRef}>
+            <div className="eyebrow">What We Offer</div>
+            <h2>Our services</h2>
+            <p>The full scope of what Merck Group of Builders takes on, from raw land to a finished, occupied building.</p>
+          </div>
+          <div className="grid" ref={servicesRef} style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+            {services.map((s, i) => (
+              <div key={i} className="form-card">
+                <div className="mono" style={{ color: "var(--brass)", fontSize: ".78rem", marginBottom: 8 }}>0{i + 1}</div>
+                <h3 style={{ fontSize: "1.1rem", marginBottom: 8 }}>{s.title}</h3>
+                <p style={{ color: "var(--ink-soft)", fontSize: ".88rem", margin: 0 }}>{s.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
