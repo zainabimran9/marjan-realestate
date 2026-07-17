@@ -39,6 +39,12 @@ export const Api = {
   getInquiries: () => apiRequest("/inquiries", { auth: true }),
   updateInquiry: (id, status) => apiRequest(`/inquiries/${id}`, { method: "PATCH", body: { status }, auth: true }),
 
+  getReviews: () => apiRequest("/reviews"),
+  submitReview: (body) => apiRequest("/reviews", { method: "POST", body }),
+  getAllReviews: () => apiRequest("/reviews/all", { auth: true }),
+  updateReviewStatus: (id, status) => apiRequest(`/reviews/${id}`, { method: "PATCH", body: { status }, auth: true }),
+  deleteReview: (id) => apiRequest(`/reviews/${id}`, { method: "DELETE", auth: true }),
+
   login: (username, password) => apiRequest("/auth/login", { method: "POST", body: { username, password } })
 };
 

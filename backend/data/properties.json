@@ -27,7 +27,7 @@
       "Mosque on premises"
     ],
     "featured": true,
-    "createdAt": "2026-07-14T07:44:22.759Z"
+    "createdAt": "2026-07-17T10:08:07.213Z"
   },
   {
     "id": 2,
@@ -57,7 +57,7 @@
       "Mosque on premises"
     ],
     "featured": true,
-    "createdAt": "2026-07-14T07:44:22.772Z"
+    "createdAt": "2026-07-17T10:08:07.213Z"
   },
   {
     "id": 3,
@@ -86,7 +86,7 @@
       "Loading access"
     ],
     "featured": true,
-    "createdAt": "2026-07-14T07:44:22.772Z"
+    "createdAt": "2026-07-17T10:08:07.213Z"
   },
   {
     "id": 4,
@@ -113,7 +113,7 @@
       "24/7 security"
     ],
     "featured": false,
-    "createdAt": "2026-07-14T07:44:22.772Z"
+    "createdAt": "2026-07-17T10:08:07.213Z"
   },
   {
     "id": 5,
@@ -140,7 +140,7 @@
       "Gas & electricity on street"
     ],
     "featured": false,
-    "createdAt": "2026-07-14T07:44:22.772Z"
+    "createdAt": "2026-07-17T10:08:07.213Z"
   },
   {
     "id": 6,
@@ -167,6 +167,6 @@
       "Covered parking"
     ],
     "featured": false,
-    "createdAt": "2026-07-14T07:44:22.772Z"
+    "createdAt": "2026-07-17T10:08:07.213Z"
   }
 ]

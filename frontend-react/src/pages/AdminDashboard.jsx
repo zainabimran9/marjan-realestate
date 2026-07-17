@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Api, formatPrice } from "../lib/api";
 import { toast } from "../lib/toast";
+import StarRating from "../components/StarRating";
 
 const emptyForm = {
   id: "", title: "", project: "Independent Listing", type: "apartment", status: "available",
@@ -18,6 +19,7 @@ export default function AdminDashboard() {
   const [tab, setTab] = useState("listings");
   const [listings, setListings] = useState(null);
   const [inquiries, setInquiries] = useState(null);
+  const [reviews, setReviews] = useState(null);
   const [formOpen, setFormOpen] = useState(false);
   const [form, setForm] = useState(emptyForm);
   const [saving, setSaving] = useState(false);
@@ -29,6 +31,7 @@ export default function AdminDashboard() {
     }
     loadListings();
     loadInquiries();
+    loadReviews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -39,6 +42,31 @@ export default function AdminDashboard() {
   function loadInquiries() {
     setInquiries(null);
     Api.getInquiries().then(setInquiries).catch((e) => toast(`Couldn't load inquiries — ${e.message}`));
+  }
+  function loadReviews() {
+    setReviews(null);
+    Api.getAllReviews().then(setReviews).catch((e) => toast(`Couldn't load reviews — ${e.message}`));
+  }
+
+  async function updateReview(id, status) {
+    try {
+      await Api.updateReviewStatus(id, status);
+      toast(status === "approved" ? "Review approved" : "Review rejected");
+      loadReviews();
+    } catch (err) {
+      toast(`Couldn't update — ${err.message}`);
+    }
+  }
+
+  async function deleteReview(id) {
+    if (!window.confirm("Delete this review permanently?")) return;
+    try {
+      await Api.deleteReview(id);
+      toast("Review deleted");
+      loadReviews();
+    } catch (err) {
+      toast(`Couldn't delete — ${err.message}`);
+    }
   }
 
   function logout() {
@@ -109,6 +137,7 @@ export default function AdminDashboard() {
   }
 
   const newCount = inquiries?.filter((i) => i.status === "new").length || 0;
+  const pendingReviewCount = reviews?.filter((r) => r.status === "pending").length || 0;
 
   return (
     <div className="admin-shell">
@@ -118,6 +147,9 @@ export default function AdminDashboard() {
           <a href="#listings" className={tab === "listings" ? "active" : ""} onClick={(e) => { e.preventDefault(); setTab("listings"); }}>Listings</a>
           <a href="#inquiries" className={tab === "inquiries" ? "active" : ""} onClick={(e) => { e.preventDefault(); setTab("inquiries"); }}>
             Inquiries {newCount > 0 && `(${newCount})`}
+          </a>
+          <a href="#reviews" className={tab === "reviews" ? "active" : ""} onClick={(e) => { e.preventDefault(); setTab("reviews"); }}>
+            Reviews {pendingReviewCount > 0 && `(${pendingReviewCount})`}
           </a>
           <a href="#logout" onClick={(e) => { e.preventDefault(); logout(); }}>Sign Out</a>
         </nav>
@@ -189,6 +221,39 @@ export default function AdminDashboard() {
                           <option value="contacted">Contacted</option>
                           <option value="closed">Closed</option>
                         </select>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
+
+        {tab === "reviews" && (
+          <section>
+            <div style={{ marginBottom: 28 }}>
+              <h2 style={{ color: "var(--ink)" }}>Reviews</h2>
+              <p style={{ color: "var(--ink-soft)", margin: 0 }}>Submitted by site visitors. Approve to show on the public site, reject or delete otherwise.</p>
+            </div>
+            <div className="table-wrap">
+              <table className="table">
+                <thead><tr><th>Rating</th><th>Name</th><th>Comment</th><th>Property</th><th>Received</th><th>Status</th><th></th></tr></thead>
+                <tbody>
+                  {!reviews && <tr><td colSpan={7}>Loading…</td></tr>}
+                  {reviews && !reviews.length && <tr><td colSpan={7}>No reviews submitted yet.</td></tr>}
+                  {reviews && reviews.map((r) => (
+                    <tr key={r.id}>
+                      <td><StarRating value={r.rating} readOnly size={14} /></td>
+                      <td>{r.name}</td>
+                      <td style={{ maxWidth: 260 }}>{r.comment || "—"}</td>
+                      <td>{r.propertyTitle || "—"}</td>
+                      <td className="mono" style={{ fontSize: ".78rem" }}>{new Date(r.createdAt).toLocaleString()}</td>
+                      <td><span className={`badge ${r.status === "approved" ? "closed" : r.status === "pending" ? "new" : "contacted"}`}>{r.status}</span></td>
+                      <td style={{ whiteSpace: "nowrap" }}>
+                        {r.status !== "approved" && <button className="btn btn-outline btn-sm" onClick={() => updateReview(r.id, "approved")}>Approve</button>}{" "}
+                        {r.status !== "rejected" && <button className="btn btn-outline btn-sm" onClick={() => updateReview(r.id, "rejected")}>Reject</button>}{" "}
+                        <button className="btn btn-danger btn-sm" onClick={() => deleteReview(r.id)}>Delete</button>
                       </td>
                     </tr>
                   ))}

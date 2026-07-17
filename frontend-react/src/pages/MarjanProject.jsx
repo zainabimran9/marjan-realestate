@@ -9,6 +9,7 @@ import {
 import { useLightbox } from "../components/Lightbox";
 import { useSiteVisit } from "../components/SiteVisitModal";
 import InstallmentCalculator from "../components/InstallmentCalculator";
+import ReviewsSection from "../components/ReviewsSection";
 
 import elevationDay from "../assets/marjan/elevation-day.jpg";
 import facadeCloseup from "../assets/marjan/facade-closeup.jpg";
@@ -241,6 +242,8 @@ export default function MarjanProject() {
           <InstallmentCalculator defaultPrice={8500000} />
         </div>
       </section>
+
+      <ReviewsSection propertyTitle="Marjan Classic Mall & Residency" />
 
       <section className="cta-band">
         <div className="wrap" ref={ctaRef}>

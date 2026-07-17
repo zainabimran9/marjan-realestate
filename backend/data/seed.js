@@ -157,5 +157,6 @@ const properties = [
 
 writeTable("properties", properties);
 writeTable("inquiries", []);
+writeTable("reviews", []);
 
 console.log(`Seeded ${properties.length} properties.`);

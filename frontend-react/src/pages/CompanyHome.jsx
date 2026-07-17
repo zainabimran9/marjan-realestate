@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { projects } from "../lib/projects";
 import ProjectCard from "../components/ProjectCard";
+import ReviewsSection from "../components/ReviewsSection";
 import elevationDay from "../assets/marjan/elevation-day.jpg";
 import { useHeroTimeline, useHeroParallax, useScrollReveal, useStaggerReveal, usePageTransition } from "../lib/animations";
 
@@ -124,6 +125,8 @@ export default function CompanyHome() {
           </div>
         </div>
       </section>
+
+      <ReviewsSection />
 
       <section className="cta-band">
         <div className="wrap" ref={ctaRef}>

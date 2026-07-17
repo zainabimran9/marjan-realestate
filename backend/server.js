@@ -6,6 +6,7 @@ const fs = require("fs");
 
 const propertiesRouter = require("./routes/properties");
 const inquiriesRouter = require("./routes/inquiries");
+const reviewsRouter = require("./routes/reviews");
 const authRouter = require("./routes/auth");
 const { DATA_DIR } = require("./db");
 
@@ -25,6 +26,7 @@ if (!fs.existsSync(path.join(DATA_DIR, "properties.json"))) {
 app.use("/api/auth", authRouter);
 app.use("/api/properties", propertiesRouter);
 app.use("/api/inquiries", inquiriesRouter);
+app.use("/api/reviews", reviewsRouter);
 
 app.get("/api/health", (req, res) => res.json({ ok: true }));
 
