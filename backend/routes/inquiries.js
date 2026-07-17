@@ -6,7 +6,7 @@ const router = express.Router();
 
 // POST /api/inquiries — public, submitted from the contact / property forms
 router.post("/", (req, res) => {
-  const { name, phone, email, message, propertyId, propertyTitle } = req.body || {};
+  const { name, phone, email, message, propertyId, propertyTitle, city, source, budgetRange, propertyType, siteVisitDate } = req.body || {};
 
   if (!name || !phone) {
     return res.status(400).json({ error: "Name and phone number are required." });
@@ -21,6 +21,11 @@ router.post("/", (req, res) => {
     message: message || "",
     propertyId: propertyId || null,
     propertyTitle: propertyTitle || null,
+    city: city || "",
+    source: source || "",
+    budgetRange: budgetRange || "",
+    propertyType: propertyType || "",
+    siteVisitDate: siteVisitDate || "",
     status: "new", // new -> contacted -> closed
     createdAt: new Date().toISOString()
   };

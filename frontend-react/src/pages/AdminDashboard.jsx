@@ -168,16 +168,19 @@ export default function AdminDashboard() {
             </div>
             <div className="table-wrap">
               <table className="table">
-                <thead><tr><th>Name</th><th>Phone</th><th>Email</th><th>Property</th><th>Message</th><th>Received</th><th>Status</th></tr></thead>
+                <thead><tr><th>Name</th><th>Phone</th><th>Email</th><th>Property</th><th>Budget</th><th>Type</th><th>Visit Date</th><th>Message</th><th>Received</th><th>Status</th></tr></thead>
                 <tbody>
-                  {!inquiries && <tr><td colSpan={7}>Loading…</td></tr>}
-                  {inquiries && !inquiries.length && <tr><td colSpan={7}>No inquiries yet.</td></tr>}
+                  {!inquiries && <tr><td colSpan={10}>Loading…</td></tr>}
+                  {inquiries && !inquiries.length && <tr><td colSpan={10}>No inquiries yet.</td></tr>}
                   {inquiries && inquiries.map((i) => (
                     <tr key={i.id}>
                       <td>{i.name}</td>
                       <td>{i.phone}</td>
                       <td>{i.email || "—"}</td>
                       <td>{i.propertyTitle || "General inquiry"}</td>
+                      <td>{i.budgetRange || "—"}</td>
+                      <td>{i.propertyType || "—"}</td>
+                      <td className="mono" style={{ fontSize: ".78rem" }}>{i.siteVisitDate || "—"}</td>
                       <td style={{ maxWidth: 220 }}>{i.message || "—"}</td>
                       <td className="mono" style={{ fontSize: ".78rem" }}>{new Date(i.createdAt).toLocaleString()}</td>
                       <td>

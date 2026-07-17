@@ -2,9 +2,11 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Marquee from "./components/Marquee";
 import WhatsAppButton from "./components/WhatsAppButton";
 import Toast from "./components/Toast";
 import { LightboxProvider } from "./components/Lightbox";
+import { SiteVisitProvider } from "./components/SiteVisitModal";
 import { useCardTilt } from "./lib/animations";
 import CompanyHome from "./pages/CompanyHome";
 import About from "./pages/About";
@@ -30,11 +32,20 @@ function ScrollManager() {
   return null;
 }
 
+const marqueeItems = [
+  "Live Bookings Open — Marjan Classic Mall & Residency",
+  "Apartments, Shops & Offices Available",
+  "Sector 16-A, Shah Latif Town, Karachi",
+  "Flexible Installment Plans Available",
+  "Book a Site Visit Today"
+];
+
 function SiteLayout({ children }) {
   return (
     <>
       <Header />
       {children}
+      <Marquee items={marqueeItems} />
       <Footer />
       <WhatsAppButton />
     </>
@@ -46,6 +57,7 @@ export default function App() {
   return (
     <BrowserRouter basename="/marjan-realestate">
       <LightboxProvider>
+      <SiteVisitProvider>
         <ScrollManager />
         <Routes>
           <Route path="/" element={<SiteLayout><CompanyHome /></SiteLayout>} />
@@ -60,6 +72,7 @@ export default function App() {
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
         </Routes>
         <Toast />
+      </SiteVisitProvider>
       </LightboxProvider>
     </BrowserRouter>
   );

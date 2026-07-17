@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { Api, Favorites, formatPrice, statusLabel } from "../lib/api";
 import { toast } from "../lib/toast";
 import { useLightbox } from "../components/Lightbox";
+import { useSiteVisit } from "../components/SiteVisitModal";
+import InstallmentCalculator from "../components/InstallmentCalculator";
 import { useStaggerReveal, usePageTransition } from "../lib/animations";
 
 export default function PropertyDetail() {
@@ -13,6 +15,7 @@ export default function PropertyDetail() {
   const [form, setForm] = useState({ name: "", phone: "", email: "", message: "" });
   const [sending, setSending] = useState(false);
   const lightbox = useLightbox();
+  const siteVisit = useSiteVisit();
 
   useEffect(() => {
     setProperty(null);
@@ -81,6 +84,9 @@ export default function PropertyDetail() {
             {(property.amenities || []).length ? property.amenities.map((a, i) => <li key={i}>{a}</li>) : <li>Not specified</li>}
           </ul>
 
+          <h3 style={{ marginTop: 32, marginBottom: 20 }}>Payment Plan Calculator</h3>
+          <InstallmentCalculator defaultPrice={property.price} />
+
           <h3 style={{ marginTop: 32 }}>Location</h3>
           <iframe
             className="map-embed"
@@ -97,8 +103,11 @@ export default function PropertyDetail() {
             <div className="price">{property.priceLabel || formatPrice(property.price)}</div>
             <p style={{ fontSize: ".82rem", color: "var(--ink-soft)", marginBottom: 20 }}>{property.type} &middot; {property.floor || property.city}</p>
 
-            <button className="btn btn-outline btn-sm" style={{ width: "100%", justifyContent: "center", marginBottom: 20 }} onClick={toggleFav}>
+            <button className="btn btn-outline btn-sm" style={{ width: "100%", justifyContent: "center", marginBottom: 10 }} onClick={toggleFav}>
               {isFav ? "\u2665 Saved to favorites" : "\u2661 Save to favorites"}
+            </button>
+            <button className="btn btn-primary btn-sm" style={{ width: "100%", justifyContent: "center", marginBottom: 20 }} onClick={() => siteVisit.open({ id: property.id, title: property.title })}>
+              Schedule a Site Visit
             </button>
 
             <h3 style={{ fontSize: "1.05rem" }}>Interested?</h3>

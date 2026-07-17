@@ -7,6 +7,8 @@ import {
   useScrollReveal, useBoardReveal, useStaggerReveal, usePageTransition
 } from "../lib/animations";
 import { useLightbox } from "../components/Lightbox";
+import { useSiteVisit } from "../components/SiteVisitModal";
+import InstallmentCalculator from "../components/InstallmentCalculator";
 
 import elevationDay from "../assets/marjan/elevation-day.jpg";
 import facadeCloseup from "../assets/marjan/facade-closeup.jpg";
@@ -51,6 +53,7 @@ export default function MarjanProject() {
   const [featured, setFeatured] = useState(null);
   const [error, setError] = useState(null);
   const lightbox = useLightbox();
+  const siteVisit = useSiteVisit();
 
   useEffect(() => {
     Api.getProperties({}).then(setAll).catch((e) => setError(e.message));
@@ -95,7 +98,7 @@ export default function MarjanProject() {
           <p className="hero-sub" ref={subRef}>Marjan Classic Mall &amp; Residency pairs ground-floor retail with residential floors above — apartments, shops and offices, all with live availability you can check before you visit.</p>
           <div className="hero-actions" ref={actionsRef}>
             <Link to="/listings" className="btn btn-primary">View Available Units</Link>
-            <Link to="/contact" className="btn btn-ghost-light">Book a Site Visit</Link>
+            <button onClick={() => siteVisit.open({ title: "Marjan Classic Mall & Residency" })} className="btn btn-ghost-light">Book a Site Visit</button>
           </div>
           <div className="hero-stats">
             <div className="hero-stat"><div className="num" ref={floorsRef}>0</div><div className="lbl">Floors</div></div>
@@ -228,6 +231,14 @@ export default function MarjanProject() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section-tight" style={{ background: "#fff", borderTop: "1px solid var(--line)" }}>
+        <div className="wrap" style={{ maxWidth: 640 }}>
+          <div className="eyebrow">Plan Your Budget</div>
+          <h2 style={{ marginBottom: 20 }}>Payment Plan Calculator</h2>
+          <InstallmentCalculator defaultPrice={8500000} />
         </div>
       </section>
 

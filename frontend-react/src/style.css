@@ -326,7 +326,7 @@ p { margin: 0 0 1em; }
 
 .field { display: flex; flex-direction: column; gap: 6px; }
 .field label { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
-select, input[type="text"], input[type="number"], input[type="email"], input[type="tel"], textarea {
+select, input[type="text"], input[type="number"], input[type="email"], input[type="tel"], input[type="date"], textarea {
   font-family: var(--font-body);
   font-size: 0.92rem;
   padding: 0.7em 0.8em;
@@ -334,6 +334,32 @@ select, input[type="text"], input[type="number"], input[type="email"], input[typ
   border-radius: var(--radius);
   background: var(--ivory);
   color: var(--ink);
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line);
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--coral);
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--coral);
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
 }
 select:focus, input:focus, textarea:focus { outline: 2px solid var(--brass); outline-offset: 1px; }
 textarea { resize: vertical; min-height: 100px; font-family: var(--font-body); }
@@ -416,6 +442,39 @@ textarea { resize: vertical; min-height: 100px; font-family: var(--font-body); }
 }
 .cta-band h2 { color: var(--ivory); }
 .cta-band p { color: rgba(246,241,231,0.85); max-width: 50ch; margin: 0 auto 28px; }
+
+/* ---------- Marquee banner ---------- */
+.marquee {
+  background: var(--ink);
+  color: var(--brass-light);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 14px 0;
+  border-top: 1px solid rgba(246,241,231,0.1);
+  border-bottom: 1px solid rgba(246,241,231,0.1);
+}
+.marquee-track {
+  display: inline-flex;
+  animation: marquee-scroll 28s linear infinite;
+}
+.marquee-item {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.marquee-dot { color: var(--coral); font-size: 0.6rem; }
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
 
 /* ---------- WhatsApp floating button ---------- */
 .wa-float {
